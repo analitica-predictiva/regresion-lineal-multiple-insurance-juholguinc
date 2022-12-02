@@ -153,4 +153,5 @@ def pregunta_04():
 
     # Retorne el error cuadrático medio para entrenamiento y prueba
     print(mse_test, mse_train)
+
     return mse_train, mse_test
