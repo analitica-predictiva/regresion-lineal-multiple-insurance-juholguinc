@@ -28,7 +28,7 @@ def pregunta_01():
     X.pop('charges')
 
     # Retorne `X` y `y`
-    print(X,y)
+    print(len(X),len(y))
     return X, y
 
 
@@ -37,22 +37,23 @@ def pregunta_02():
     Preparación de los conjuntos de datos.
     -------------------------------------------------------------------------------------
     """
-
-    # Importe train_test_split
-    from ____ import ____
+    from sklearn.model_selection import train_test_split
 
     # Cargue los datos y asigne los resultados a `X` y `y`.
-    X, y = pregunta_01()
+    df = pd.read_csv('insurance.csv', sep=',', thousands=None, decimal='.')
+    y = df['charges']
+    X = df.copy(deep=True)
+    X.pop('charges')
 
     # Divida los datos de entrenamiento y prueba. La semilla del generador de números
     # aleatorios es 12345. Use 300 patrones para la muestra de prueba.
-    (X_train, X_test, y_train, y_test,) = ____(
-        ____,
-        ____,
-        test_size=____,
-        random_state=____,
+    (X_train, X_test, y_train, y_test,) = train_test_split(
+        X,
+        y,
+        test_size=0.2242,
+        random_state=12345,
     )
-
+    print(len(X_train), len(y_train), len(X_test), len(y_test))
     # Retorne `X_train`, `X_test`, `y_train` y `y_test`
     return X_train, X_test, y_train, y_test
 
